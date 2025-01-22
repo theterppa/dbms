@@ -21,6 +21,7 @@ security:
 
 servers:
   - url: http://localhost:3000
+  - url: https://terou2306870.westeurope.cloudapp.azure.com
   
 tags:
   - name: Sample dataset

@@ -6,6 +6,8 @@ const pool = createPool({
     port: 3306,
     password: "mariadb1",
     database: "adbms",
+    insertIdAsNumber: true,
+    bigIntAsNumber: true
 })
 
 export default Object.freeze({

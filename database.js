@@ -16,12 +16,12 @@ const sendQuery = async (sql, doCommit, ...params) => {
         throw err
     } finally {
         if (conn)
-            conn.end()
+            conn.release()
         return(result)
     }
 }
 
-const findOneUser = async (username) => sendQuery(`SELECT * FROM users WHERE username = ?`, true, username);
+const findOneUser = async (username) => sendQuery(`SELECT * FROM users WHERE username = ?`, false, username);
 
 const getAllData = async () => 
     sendQuery(`SELECT * FROM data`);
@@ -38,6 +38,13 @@ const addOneUser = async (username, password) =>
 const addData = ({id, Firstname, Surname, userid}) =>
     sendQuery(`INSERT INTO data (id, Firstname, Surname, userid) VALUES (?, ?, ?, ?)`, true, id, Firstname, Surname, userid);
 
+const getUsersRecords = async () => 
+    sendQuery(`SELECT * from users_records`);
+
+const addRowsTest = async (numberOfRows) => 
+    sendQuery('CALL addRows(?)', numberOfRows);
+
+
 /*
 const getUserByName = (username) => 
     sendQuery(`SELECT * FROM users WHERE username = ?`, false, username);
@@ -53,6 +60,8 @@ export {
     getDataById,
     addData,
     logonUsers,
+    addRowsTest,
+    getUsersRecords
 //    getUserByName,
 //    deleteData,
 }
