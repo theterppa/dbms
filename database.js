@@ -41,7 +41,7 @@ const addData = ({id, Firstname, Surname, userid}) =>
 const getUsersRecords = async () => 
     sendQuery(`SELECT * from users_records`);
 
-const addRowsTest = async (numberOfRows) => 
+const addRows = async (numberOfRows) => 
     sendQuery('CALL addRows(?)', numberOfRows);
 
 
@@ -60,7 +60,7 @@ export {
     getDataById,
     addData,
     logonUsers,
-    addRowsTest,
+    addRows,
     getUsersRecords
 //    getUserByName,
 //    deleteData,
